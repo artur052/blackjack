@@ -4,7 +4,7 @@ import screen
 
 class GameStats:
     def __init__(self):
-        if input("Do you want to play a game of blackjack?[Y/n]: ") == "Y":
+        if input("Quieres jugar una partida de 21?: [si/no]: ") != "no":
             self.start_game = True
         else:
             self.start_game = False
@@ -21,9 +21,9 @@ class GameStats:
 
         if sum(player_cards) < 21:
             if player_cards == self.user_cards:
-                print(f"Your cards: {self.user_cards}, current score: {sum(self.user_cards)}")
-                print(f"Computer's first card: {self.computer_cards[0]}")
-                if input("Type 'y' to get another card, type 'n' to pass: ") == "y":
+                print(f"Tus cartas son: {self.user_cards}, puntuacion actual: {sum(self.user_cards)}")
+                print(f"primera carta de la computadora: {self.computer_cards[0]}")
+                if input("escribe 'si' para agarrar una carta, escribe 'no' para pasar: ") != "no":
                     self.user_cards.append(random.choice(self.deck))
                     return True
                 else:
@@ -37,11 +37,13 @@ class GameStats:
         return False
 
     def check_winner(self):
-        print(f"Your final cards: {self.user_cards}, Your final score: {sum(self.user_cards)}")
-        print(f"Computer final cards: {self.computer_cards}, Computer's final score: {sum(self.computer_cards)}")
+        print(f"Tus cartas finales son: {self.user_cards}, tu puntuacion final fue: {sum(self.user_cards)}")
+        print(f"Cartas finales de la computadora: {self.computer_cards}, "
+              f"puntuacion final de la computadora: {sum(self.computer_cards)}")
         if 21 >= sum(self.user_cards) > sum(self.computer_cards) or sum(self.computer_cards) > 21:
-            print("user win")
+            print("ganaste! eres la mera riata 😍")
         elif sum(self.user_cards) == sum(self.computer_cards):
-            print("it's a draw")
+            print("Fue un empate 🙃")
         else:
-            print("the machine win")
+            print("La maquina gano 😳")
+
